@@ -2,7 +2,7 @@ import { merge } from 'webpack-merge'
 
 import common from './webpack.common.js'
 
-const PORT = 8080
+const PORT = process.env.SERVER_ADDRESS || 8080
 
 const config = {
   mode: 'development',

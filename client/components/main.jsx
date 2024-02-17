@@ -14,13 +14,14 @@ const Main = () => {
     const handleChangeType = (newType) => setType(newType)
     const handleFilter = (newValue) => setInputValue(newValue)
 
-    const priductsTypes = [{ru:"Овощи", type:"Vegetables"},{ru:"Фрукты", type:"Fruits"},{ru:"Ягоды", type:"Berries"},{ru:"Молочные продукты", type:"Dairy products"},{ru: "Мясо", type:"Meat"},{ru:"Рыба", type:"Fish"},{ru:"Орехи и Семена", type:"Seeds"},{ru:"Бакалея", type:"Grocery"},{ru:"Зелень", type:"Greens"},{ru:"Масла", type:"Oils"},{ru:"Грибы", type:"Mushrooms"},{ru:"Сухофрукты", type:"Dried fruits"},{ru:"Яйца", type:"Eggs"},{ru:"Полный список продуктов", type:"any"}]
-    const category = priductsTypes.filter(it => it.type === type).map(it => it.ru)
+    const productsTypes = [{ru:"Овощи", type:"Vegetables"},{ru:"Фрукты", type:"Fruits"},{ru:"Ягоды", type:"Berries"},{ru:"Молочные продукты", type:"Dairy products"},{ru: "Мясо", type:"Meat"},{ru:"Рыба", type:"Fish"},{ru:"Орехи и Семена", type:"Seeds"},{ru:"Бакалея", type:"Grocery"},{ru:"Зелень", type:"Greens"},{ru:"Масла", type:"Oils"},{ru:"Грибы", type:"Mushrooms"},{ru:"Сухофрукты", type:"Dried fruits"},{ru:"Яйца", type:"Eggs"},{ru:"Полный список продуктов", type:"any"}]
+    const category = productsTypes.filter(it => it.type === type).map(it => it.ru)
+    const PORT = process.env.SERVER_ADDRESS || 8080
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8080/products');
+                const response = await fetch(`http://localhost:${PORT}/products`);
                 const data = await response.json();
                 setProducts(data);
             } catch (error) {

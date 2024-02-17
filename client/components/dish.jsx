@@ -21,7 +21,7 @@ const Dish = () => {
         <div className='bg-gray-100 flex flex-col min-w-[370px] min-h-screen select-none'>
             <Head title="Main"/>
             <Header />
-            <div className="flex items-center justify-center mt-12 bg-gray-100">
+            <div className="flex items-center justify-center mt-12 mx-2 bg-gray-100">
                 <table className="bg-gray-100 mt-10 border border-gray-300 rounded-lg overflow-hidden shadow-md select-text">
                     <thead className="bg-gray-100">
                         <tr className="text-left text-sm font-medium text-gray-600 uppercase">
