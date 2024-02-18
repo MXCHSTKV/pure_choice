@@ -12,7 +12,7 @@ const Header = ({onChangeType, onFilter}) => {
 
     return (
         <div className="fixed top-0 left-0 w-full z-10 bg-gray-100">
-            <div className="flex items-center min-w-[370px] bg-orange-400 text-gray-600 h-12 rounded-b-xl mx-2">
+            <div className="flex items-center min-w-[370px] bg-orange-400 text-gray-600 h-12 rounded-b-xl sm:mx-2">
                 <div className="ml-1 sm:ml-5 text-lg sm:text-2xl font-semibold cursor-pointer whitespace-nowrap transition-all duration-500 ease-linear" onClick={()=>funk("any")}>Pure Choice</div>
                 <div className="flex items-center w-full">
                     <div className="relative ml-3 md:ml-11 transition-all duration-500 ease-linear">
