@@ -7,7 +7,7 @@ import { resolve } from 'path'
 import { Html } from '../client/html.js'
 
 const server = express()
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 10000
 const __dirname = process.cwd()
 const mongoKey = process.env.REACT_APP_MONGODB_PASS || "GJ_xWjLC!p$7aXx"
 

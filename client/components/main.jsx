@@ -16,7 +16,7 @@ const Main = () => {
 
     const productsTypes = [{ru:"Овощи", type:"Vegetables"},{ru:"Фрукты", type:"Fruits"},{ru:"Ягоды", type:"Berries"},{ru:"Молочные продукты", type:"Dairy products"},{ru: "Мясо", type:"Meat"},{ru:"Рыба", type:"Fish"},{ru:"Орехи и Семена", type:"Seeds"},{ru:"Бакалея", type:"Grocery"},{ru:"Зелень", type:"Greens"},{ru:"Масла", type:"Oils"},{ru:"Грибы", type:"Mushrooms"},{ru:"Сухофрукты", type:"Dried fruits"},{ru:"Яйца", type:"Eggs"},{ru:"Полный список продуктов", type:"any"}]
     const category = productsTypes.filter(it => it.type === type).map(it => it.ru)
-    const PORT = process.env.SERVER_ADDRESS || 8080
+    const PORT = process.env.SERVER_ADDRESS || 10000
 
     useEffect(() => {
         const fetchData = async () => {
