@@ -24,7 +24,7 @@ const Header = ({onChangeType, onFilter}) => {
                                 <line x1="16" y1="44" x2="48" y2="44"/>
                             </svg>
                         </label>
-                        {isHidden && <div onMouseEnter={() => clearTimeout(timer)} onMouseLeave={() => timer = setTimeout(() => setIsHidden(!isHidden), 700)} className="absolute shadow-md z-10 w-52 mt-2 rounded-lg bg-white ">    
+                        {isHidden && <div onMouseEnter={() => clearTimeout(timer)} onMouseLeave={() => timer = setTimeout(() => setIsHidden(!isHidden), 700)} className="absolute shadow-md z-10 w-52 mt-2 rounded-lg bg-white max-h-screen overflow-scroll">    
                             <div className="pl-4 mt-3 hover:bg-gray-100 text-orange-400 cursor-pointer" onClick={() => {funk('any'); setIsHidden(!isHidden) }}>Все продукты</div>
                             <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Vegetables'); setIsHidden(!isHidden) }}>Овощи</div>
                             <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Fruits'); setIsHidden(!isHidden) }}>Фрукты</div>
@@ -85,7 +85,7 @@ const Header = ({onChangeType, onFilter}) => {
                     </div>
                 </div>
             </div>
-            {isHiddenMobile && <div className="bg-white mt-2 py-3 mx-4 rounded-md shadow-md select-none h-full sm:hidden block transition-width duration-500 ease-in-out">
+            {isHiddenMobile && <div className="bg-white mt-2 py-3 mx-4 rounded-md shadow-md select-none h-full sm:hidden block transition-width duration-500 ease-in-out max-h-screen overflow-scroll">
                 <div className="pl-4 mb-1 text-orange-400 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('any'); setIsHiddenMobile(!isHiddenMobile) } }>Все продукты</div>
                 <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Vegetables'); setIsHiddenMobile(!isHiddenMobile) }}>Овощи</div>
                 <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Fruits'); setIsHiddenMobile(!isHiddenMobile) } }>Фрукты</div>
@@ -99,7 +99,7 @@ const Header = ({onChangeType, onFilter}) => {
                 <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Mushrooms'); setIsHiddenMobile(!isHiddenMobile) } }>Грибы</div>
                 <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Dried fruits'); setIsHiddenMobile(!isHiddenMobile) } }>Сухофрукты</div>
                 <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Flour and grains'); setIsHiddenMobile(!isHiddenMobile) } }>Мука</div>
-                <div className="pl-4 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Eggs'); setIsHiddenMobile(!isHiddenMobile) } }>Яйца</div>
+                <div className="pl-4 pb-4 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Eggs'); setIsHiddenMobile(!isHiddenMobile) } }>Яйца</div>
             </div>}
         </div>
     )

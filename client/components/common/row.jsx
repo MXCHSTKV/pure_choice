@@ -37,12 +37,12 @@ const Row = (props) => {
 
   return (
     weight === 0 ? null : <tr className="border-t border-gray-200">
-      <td className="px-1 sm:px-3 py-2">{product.item}</td>
-      <td className="px-1 sm:px-3 py-2"><input type="number" onChange={onChange} min='0' className='w-14' value={weight}/></td>
-      <td className="px-1 sm:px-3 py-2">{product.energy}</td>
-      <td className="px-1 sm:px-3 py-2">{product.protein}</td>
-      <td className="px-1 sm:px-3 py-2">{product.lipid}</td>
-      <td className="px-1 sm:px-3 py-2">{product.carbohydrate}</td>
+      <td className="px-1 py-2">{product.item}</td>
+      <td className="px-1 py-2"><input type="number" onChange={onChange} min='0' className='w-14' value={weight}/></td>
+      <td className="px-1 py-2">{product.energy}</td>
+      <td className="px-1 py-2">{product.protein}</td>
+      <td className="px-1 py-2">{product.lipid}</td>
+      <td className="px-1 py-2">{product.carbohydrate}</td>
     </tr>
   );
 };

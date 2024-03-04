@@ -38,18 +38,18 @@ const Dish = () => {
                         return <Row key={product.name} name={product.name} item={product.item}/>
                         })}
                         <tr className="bg-gray-100">
-                            <td className="text-gray-600 text-right px-2">Total:</td>
-                            <td className="text-gray-600">{counter('weight')}</td>
-                            <td className="text-gray-600">{Math.round(counter('energy') * 10) / 10}</td>
-                            <td className="text-gray-600">{Math.round(counter('protein') * 10) / 10}</td>
-                            <td className="text-gray-600">{Math.round(counter('lipid') * 10) / 10}</td>
-                            <td className="text-gray-600">{Math.round(counter('carbohydrate') * 10) / 10}</td>
+                            <td className="text-gray-600 text-right px-1">Total:</td>
+                            <td className="px-1 text-gray-600">{counter('weight')}</td>
+                            <td className="px-1 text-gray-600">{Math.round(counter('energy') * 10) / 10}</td>
+                            <td className="px-1 text-gray-600">{Math.round(counter('protein') * 10) / 10}</td>
+                            <td className="px-1 text-gray-600">{Math.round(counter('lipid') * 10) / 10}</td>
+                            <td className="px-1 text-gray-600">{Math.round(counter('carbohydrate') * 10) / 10}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div className="flex min-w-[370px] justify-center my-8">
-            <button type="button" className="h-8 w-44 text-gray-600 bg-orange-400 active:scale-95 active:bg-orange-400 rounded-md px-2 hover:bg-orange-300 transform transition duration-500" onClick={() => dispatch(cleanTheDish())}>Очистить тарелку</button>
+            <button type="button" className="h-8 w-44 text-gray-600 bg-orange-400 active:scale-95 active:bg-orange-400 rounded-md px-2 hover:bg-orange-300 transform transition duration-500 overflow-hidden" onClick={() => dispatch(cleanTheDish())}>Очистить тарелку</button>
             </div>
             <div className="flex-grow"></div>
             <Footer />
