@@ -3,13 +3,15 @@ import { MongoClient } from 'mongodb'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import { resolve } from 'path'
+import dotenv from 'dotenv';
 
 import { Html } from '../client/html.js'
 
+dotenv.config()
 const server = express()
 const PORT = 8080
 const __dirname = process.cwd()
-const mongoKey = process.env.REACT_APP_MONGODB_PASS || "GJ_xWjLC!p$7aXx"
+const mongoKey = process.env.REACT_APP_MONGODB_PASS
 
 const url = `mongodb+srv://chistiakovmax:${mongoKey}@purecluster.ecsgkq4.mongodb.net/puredb?retryWrites=true&w=majority`;  
 const client = new MongoClient(url, { useNewUrlParser:true, useUnifiedTopology: true });  
@@ -33,7 +35,7 @@ server.get('/products', async (req, res) => {
       
       const db = client.db("puredb");
       const collection = db.collection("items");
-      const cursor = collection.find({}).sort({ item: 1 });
+      const cursor = collection.find({}).sort({ kcal: 1 });
 
       const data = [];
       try {

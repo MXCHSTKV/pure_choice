@@ -3,20 +3,21 @@ import { useNavigate } from 'react-router-dom'
 
 const Header = ({onChangeType, onFilter}) => {
     const navigate = useNavigate()
-    const onClick = () => navigate('/')
-    const dish = () => navigate('/dish')
+    const goToMain = () => navigate('/')
+    const goToDish = () => navigate('/dish')
     const [isHidden, setIsHidden] = useState(false)
     const [isHiddenMobile, setIsHiddenMobile] = useState(false)
     let timer
-    let funk = (type) => onChangeType ? onChangeType(type) : onClick()
+    let changeTypeSelection = (type) => onChangeType ? onChangeType(type) : goToMain()
+    let filterSelection = (prod) => onFilter ? onFilter(prod) : goToMain()
 
     return (
         <div className="fixed top-0 left-0 w-full z-10 bg-gray-100">
             <div className="flex items-center min-w-[370px] bg-orange-400 text-gray-600 h-12 rounded-b-xl sm:mx-2">
-                <div className="ml-1 sm:ml-5 text-lg sm:text-2xl font-semibold cursor-pointer whitespace-nowrap transition-all duration-500 ease-linear" onClick={()=>funk("any")}>Pure Choice</div>
+                <div className="ml-1 sm:ml-5 text-lg sm:text-2xl font-semibold cursor-pointer whitespace-nowrap transition-all duration-500 ease-linear" onClick={()=>changeTypeSelection("any")}>Pure Choice</div>
                 <div className="flex items-center w-full">
-                    <div className="relative ml-3 md:ml-11 transition-all duration-500 ease-linear">
-                        <button type="button" id='catalog_button' onMouseEnter={() => {setIsHidden(true) ; clearTimeout(timer)}} onMouseLeave={() => timer = setTimeout(() => setIsHidden(!isHidden), 700)} className="z-10 rounded border pl-7 pr-3 border-black bg-orange-400 hover:bg-orange-300 hidden sm:block "><div>Каталог</div></button>
+                    <div className="relative ml-3 md:ml-11 transition-all duration-500 ease-linear" onMouseEnter={() => {setIsHidden(true) ; clearTimeout(timer)}} onMouseLeave={() => timer = setTimeout(() => setIsHidden(!isHidden), 700)}>
+                        <button type="button" id='catalog_button' className="z-10 rounded border pl-7 pr-3 border-black bg-orange-400 hover:bg-orange-300 hidden sm:block "><div>Каталог</div></button>
                         <label onClick={() => setIsHiddenMobile(!isHiddenMobile)  } htmlFor="catalog_button" className="absolute inset-y-0 flex items-center cursor-pointer">
                             <svg className="w-6 h-6 ml-1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000">
                                 <line x1="16" y1="32" x2="48" y2="32"/>
@@ -25,26 +26,26 @@ const Header = ({onChangeType, onFilter}) => {
                             </svg>
                         </label>
                         {isHidden && <div onMouseEnter={() => clearTimeout(timer)} onMouseLeave={() => timer = setTimeout(() => setIsHidden(!isHidden), 700)} className="absolute shadow-md z-10 w-52 mt-2 rounded-lg bg-white max-h-screen overflow-scroll">    
-                            <div className="pl-4 mt-3 hover:bg-gray-100 text-orange-400 cursor-pointer" onClick={() => {funk('any'); setIsHidden(!isHidden) }}>Все продукты</div>
-                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Vegetables'); setIsHidden(!isHidden) }}>Овощи</div>
-                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Fruits'); setIsHidden(!isHidden) }}>Фрукты</div>
-                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Berries'); setIsHidden(!isHidden) }}>Ягоды</div>
-                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Dairy products'); setIsHidden(!isHidden) }}>Молочные продукты</div>
-                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Meat'); setIsHidden(!isHidden) }}>Мясо</div>
-                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Fish'); setIsHidden(!isHidden) }}>Рыба</div>
-                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Seeds'); setIsHidden(!isHidden) }}>Орехи, семена</div>
-                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Grocery'); setIsHidden(!isHidden) }}>Бакалея</div>
-                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Greens'); setIsHidden(!isHidden) }}>Зелень</div>
-                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Oils'); setIsHidden(!isHidden) }}>Масла</div>
-                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Mushrooms'); setIsHidden(!isHidden) }}>Грибы</div>
-                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Dried fruits'); setIsHidden(!isHidden) }}>Сухофрукты</div>
-                            <div className="pl-4 mb-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Eggs'); setIsHidden(!isHidden) }}>Яйца</div>
+                            <div className="pl-4 mt-3 hover:bg-gray-100 text-orange-400 cursor-pointer" onClick={() => {changeTypeSelection('any'); setIsHidden(!isHidden) }}>Все продукты</div>
+                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Vegetables'); setIsHidden(!isHidden) }}>Овощи</div>
+                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Fruits'); setIsHidden(!isHidden) }}>Фрукты</div>
+                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Berries'); setIsHidden(!isHidden) }}>Ягоды</div>
+                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Dairy products'); setIsHidden(!isHidden) }}>Молочные продукты</div>
+                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Meat'); setIsHidden(!isHidden) }}>Мясо</div>
+                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Fish'); setIsHidden(!isHidden) }}>Рыба</div>
+                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Seeds'); setIsHidden(!isHidden) }}>Орехи, семена</div>
+                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Grocery'); setIsHidden(!isHidden) }}>Бакалея</div>
+                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Greens'); setIsHidden(!isHidden) }}>Зелень</div>
+                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Oils'); setIsHidden(!isHidden) }}>Масла</div>
+                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Mushrooms'); setIsHidden(!isHidden) }}>Грибы</div>
+                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Dried fruits'); setIsHidden(!isHidden) }}>Сухофрукты</div>
+                            <div className="pl-4 mt-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Eggs'); setIsHidden(!isHidden) }}>Яйца</div>
                         </div> }
                     </div>
                     <div className="relative ml-auto hidden sm:block">
-                        <input type="text" onChange={(e)=> onFilter(e.target.value)} id="searchInput" className="z-10 pl-7 sm:w-[250px] md:w-[350px] lg:w-[600px] transition-width duration-500 ease-in-out border border-gray-300 rounded focus:outline-none focus:border-blue-800" />
+                        <input type="text" onChange={(e)=> filterSelection(e.target.value)} id="searchInput" className="z-10 pl-7 sm:w-[250px] md:w-[350px] lg:w-[600px] transition-width duration-500 ease-in-out border border-gray-300 rounded focus:outline-none focus:border-blue-800" />
                         <label htmlFor="searchInput" className="absolute inset-y-0 flex items-center">
-                            <svg className="w-6 h-6 pl-1 cursor-pointer" onClick={onClick} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg className="w-6 h-6 pl-1 cursor-pointer" onClick={goToMain} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_15_152)">
                                     <rect width="24" height="24" fill="white"/>
                                     <circle cx="10.5" cy="10.5" r="6.5" stroke="#000000" stroke-linejoin="round"/>
@@ -58,7 +59,7 @@ const Header = ({onChangeType, onFilter}) => {
                             </svg>
                         </label>
                     </div>
-                    <div className="relative ml-auto mr-[52px] md:mr-[72px]" id='plate' onClick={dish}>
+                    <div className="relative ml-auto mr-[52px] md:mr-[72px]" id='plate' onClick={goToDish}>
                         <label htmlFor="plate" className="absolute inset-y-0 flex items-center cursor-pointer">
                             <svg fill="#000000" className="w-10 h-10" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 199.603 199.603">
                                 <path d="M187.251,173.172c-4.141,0-7.509-3.369-7.509-7.509V32.074c0-1.952,1.569-5.644,7.509-5.644
@@ -86,20 +87,20 @@ const Header = ({onChangeType, onFilter}) => {
                 </div>
             </div>
             {isHiddenMobile && <div className="bg-white mt-2 py-3 mx-4 rounded-md shadow-md select-none h-full sm:hidden block transition-width duration-500 ease-in-out max-h-screen overflow-scroll">
-                <div className="pl-4 mb-1 text-orange-400 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('any'); setIsHiddenMobile(!isHiddenMobile) } }>Все продукты</div>
-                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Vegetables'); setIsHiddenMobile(!isHiddenMobile) }}>Овощи</div>
-                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Fruits'); setIsHiddenMobile(!isHiddenMobile) } }>Фрукты</div>
-                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Dairy products'); setIsHiddenMobile(!isHiddenMobile) } }>Молочные продукты</div>
-                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Meat'); setIsHiddenMobile(!isHiddenMobile) } }>Мясо</div>
-                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Fish'); setIsHiddenMobile(!isHiddenMobile) } }>Рыба</div>
-                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Seeds'); setIsHiddenMobile(!isHiddenMobile) } }>Орехи, семена</div>
-                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Grocery'); setIsHiddenMobile(!isHiddenMobile) } }>Бакалея</div>
-                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Greens'); setIsHiddenMobile(!isHiddenMobile) } }>Зелень</div>
-                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Oils'); setIsHiddenMobile(!isHiddenMobile) } }>Масла</div>
-                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Mushrooms'); setIsHiddenMobile(!isHiddenMobile) } }>Грибы</div>
-                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Dried fruits'); setIsHiddenMobile(!isHiddenMobile) } }>Сухофрукты</div>
-                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Flour and grains'); setIsHiddenMobile(!isHiddenMobile) } }>Мука</div>
-                <div className="pl-4 pb-4 hover:bg-gray-100 cursor-pointer" onClick={() => {funk('Eggs'); setIsHiddenMobile(!isHiddenMobile) } }>Яйца</div>
+                <div className="pl-4 mb-1 text-orange-400 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('any'); setIsHiddenMobile(!isHiddenMobile) } }>Все продукты</div>
+                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Vegetables'); setIsHiddenMobile(!isHiddenMobile) }}>Овощи</div>
+                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Fruits'); setIsHiddenMobile(!isHiddenMobile) } }>Фрукты</div>
+                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Dairy products'); setIsHiddenMobile(!isHiddenMobile) } }>Молочные продукты</div>
+                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Meat'); setIsHiddenMobile(!isHiddenMobile) } }>Мясо</div>
+                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Fish'); setIsHiddenMobile(!isHiddenMobile) } }>Рыба</div>
+                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Seeds'); setIsHiddenMobile(!isHiddenMobile) } }>Орехи, семена</div>
+                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Grocery'); setIsHiddenMobile(!isHiddenMobile) } }>Бакалея</div>
+                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Greens'); setIsHiddenMobile(!isHiddenMobile) } }>Зелень</div>
+                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Oils'); setIsHiddenMobile(!isHiddenMobile) } }>Масла</div>
+                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Mushrooms'); setIsHiddenMobile(!isHiddenMobile) } }>Грибы</div>
+                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Dried fruits'); setIsHiddenMobile(!isHiddenMobile) } }>Сухофрукты</div>
+                <div className="pl-4 mb-1 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Flour and grains'); setIsHiddenMobile(!isHiddenMobile) } }>Мука</div>
+                <div className="pl-4 pb-4 hover:bg-gray-100 cursor-pointer" onClick={() => {changeTypeSelection('Eggs'); setIsHiddenMobile(!isHiddenMobile) } }>Яйца</div>
             </div>}
         </div>
     )

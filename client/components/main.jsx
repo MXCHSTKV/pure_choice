@@ -16,12 +16,12 @@ const Main = () => {
 
     const productsTypes = [{ru:"Овощи", type:"Vegetables"},{ru:"Фрукты", type:"Fruits"},{ru:"Ягоды", type:"Berries"},{ru:"Молочные продукты", type:"Dairy products"},{ru: "Мясо", type:"Meat"},{ru:"Рыба", type:"Fish"},{ru:"Орехи и Семена", type:"Seeds"},{ru:"Бакалея", type:"Grocery"},{ru:"Зелень", type:"Greens"},{ru:"Масла", type:"Oils"},{ru:"Грибы", type:"Mushrooms"},{ru:"Сухофрукты", type:"Dried fruits"},{ru:"Яйца", type:"Eggs"},{ru:"Полный список продуктов", type:"any"}]
     const category = productsTypes.filter(it => it.type === type).map(it => it.ru)
-    const SERVER = process.env.SERVER_ADDRESS || "localhost:8080/"
+    const server = process.env.REACT_APP_SERVER_ADDRESS
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${SERVER}products`);
+                const response = await fetch(`${server}/products`);
                 const data = await response.json();
                 setProducts(data);
             } catch (error) {

@@ -18,7 +18,7 @@ const Dish = () => {
     }
 
     return (
-        <div className='bg-gray-100 flex flex-col min-w-[370px] min-h-screen select-none'>
+        <div className='bg-gray-100 flex flex-col min-w-[410px] min-h-screen select-none'>
             <Head title="Main"/>
             <Header />
             <div className="flex items-center justify-center mt-12 mx-2 bg-gray-100">
@@ -48,7 +48,7 @@ const Dish = () => {
                     </tbody>
                 </table>
             </div>
-            <div className="flex min-w-[370px] justify-center my-8">
+            <div className="flex min-w-[410px] justify-center my-8">
             <button type="button" className="h-8 w-44 text-gray-600 bg-orange-400 active:scale-95 active:bg-orange-400 rounded-md px-2 hover:bg-orange-300 transform transition duration-500 overflow-hidden" onClick={() => dispatch(cleanTheDish())}>Очистить тарелку</button>
             </div>
             <div className="flex-grow"></div>
