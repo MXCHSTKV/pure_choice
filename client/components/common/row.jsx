@@ -8,7 +8,7 @@ const Row = (props) => {
   const product = useSelector((s) => Object.values(s.pure.dish).find(it => it.name === props.name))
   const weight = product ? product.weight : 0
 
-  const changeWeight = (e) => dispatch(updateWeight(props.name, parseInt(e.target.value)||0))
+  const changeWeight = (e) => dispatch(updateWeight(props.name, Math.min(parseInt(e.target.value), 10000)||0))
 
   const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -38,7 +38,7 @@ const Row = (props) => {
   return (
     weight === 0 ? null : <tr className="border-t border-gray-200">
       <td className="px-1 py-2">{product.item}</td>
-      <td className="px-1 py-2"><input type="number" onChange={changeWeight} min='0' max='5000' className='w-14' value={weight}/></td>
+      <td className="px-1 py-2"><input type="number" onChange={changeWeight} min='0' max='10000' className='w-14' value={weight}/></td>
       <td className="px-1 py-2">{product.energy}</td>
       <td className="px-1 py-2">{product.protein}</td>
       <td className="px-1 py-2">{product.lipid}</td>
