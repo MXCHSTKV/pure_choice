@@ -35,7 +35,7 @@ server.get('/products', async (req, res) => {
       
       const db = client.db("puredb");
       const collection = db.collection("items");
-      const cursor = collection.find({}).sort({ kcal: 1 });
+      const cursor = collection.find({}).sort({ item: 1 });
 
       const data = [];
       try {

@@ -25,7 +25,7 @@ const Main = () => {
                 const data = await response.json();
                 setProducts(data);
             } catch (error) {
-                console.log('ERROR in catch')
+                console.log(`ERROR with fetching data from server: ${error}`)
             }
         };
     
