@@ -5,7 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { store, persistor } from '../redux'
 import Main from '../components/main.jsx'
-import NotFound from '../components/404.jsx'
+import NotFound from '../components/not_found.jsx'
 import Dish from '../components/dish.jsx'
 
 

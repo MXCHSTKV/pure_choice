@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import axios from 'axios';
 import { updateWeight, updateProperties } from  '../../redux/reducers/dish'
+import axios from 'axios';
 
 const Row = (props) => {
   const dispatch = useDispatch()
@@ -10,7 +10,7 @@ const Row = (props) => {
 
   const changeWeight = (e) => dispatch(updateWeight(props.name, Math.min(parseInt(e.target.value), 10000)||0))
 
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const usdaApi = process.env.REACT_APP_USDA_API;
 
   const nutrientSearch = (res, nutrient) => res.find(
     (obj) => obj.nutrientId === nutrient
@@ -19,9 +19,7 @@ const Row = (props) => {
 
   useEffect(() => {
     const getProductData = async (name) => {
-      const response = await axios.get(
-        `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${apiKey}&query=${name}`
-      )
+      const response = await axios.get(`${usdaApi}&query=${name}`)
       .then(res => res.data.foods[0].foodNutrients)
       .catch(err => {})
 

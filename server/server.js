@@ -11,10 +11,9 @@ dotenv.config()
 const server = express()
 const PORT = 8080
 const __dirname = process.cwd()
-const mongoKey = process.env.REACT_APP_MONGODB_PASS
+const mongoUri = process.env.REACT_APP_MONGODB_URI
 
-const url = `mongodb+srv://chistiakovmax:${mongoKey}@purecluster.ecsgkq4.mongodb.net/puredb?retryWrites=true&w=majority`;  
-const client = new MongoClient(url, { useNewUrlParser:true, useUnifiedTopology: true });  
+const client = new MongoClient(mongoUri, { useNewUrlParser:true, useUnifiedTopology: true });  
 
 const middleware = [
   cors(),

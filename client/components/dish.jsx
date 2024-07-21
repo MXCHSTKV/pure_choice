@@ -4,7 +4,7 @@ import Head from './head'
 import Header from './header'
 import Footer from './footer'
 import Row from './common/row'
-import { cleanTheDish } from '../redux/reducers/dish'
+import { clearTheDish, clearClickCounter } from '../redux/reducers/dish'
 
 
 
@@ -27,10 +27,10 @@ const Dish = () => {
                         <tr className="text-left text-sm font-medium text-gray-600 uppercase">
                             <th className="px-1 py-2">имя</th>
                             <th className="px-1 py-2">вес</th>
-                            <th className="px-1 py-2"><div className="hidden sm:block">калории</div><div className="sm:hidden">к</div></th>
-                            <th className="px-1 py-2"><div className="hidden sm:block">белки</div><div className="sm:hidden">б</div></th>
-                            <th className="px-1 py-2"><div className="hidden sm:block">жиры</div><div className="sm:hidden">ж</div></th>
-                            <th className="px-1 py-2"><div className="hidden sm:block">углеводы</div><div className="sm:hidden">у</div></th>
+                            <th className="px-1 py-2"><p className="hidden sm:block">калории</p><p className="sm:hidden">к</p></th>
+                            <th className="px-1 py-2"><p className="hidden sm:block">белки</p><p className="sm:hidden">б</p></th>
+                            <th className="px-1 py-2"><p className="hidden sm:block">жиры</p><p className="sm:hidden">ж</p></th>
+                            <th className="px-1 py-2"><p className="hidden sm:block">углеводы</p><p className="sm:hidden">у</p></th>
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
@@ -49,7 +49,7 @@ const Dish = () => {
                 </table>
             </div>
             <div className="flex min-w-[370px] justify-center my-8">
-            <button type="button" className="h-8 w-44 text-gray-600 bg-orange-400 active:scale-95 active:bg-orange-400 rounded-md px-2 hover:bg-orange-300 transform transition duration-500 overflow-hidden" onClick={() => dispatch(cleanTheDish())}>Очистить тарелку</button>
+            <button type="button" className="h-8 w-44 text-gray-600 bg-orange-400 active:scale-95 active:bg-orange-400 rounded-md px-2 hover:bg-orange-300 transform transition duration-500 overflow-hidden" onClick={() => {dispatch(clearTheDish()); dispatch(clearClickCounter())}}>Очистить тарелку</button>
             </div>
             <div className="flex-grow"></div>
             <Footer />

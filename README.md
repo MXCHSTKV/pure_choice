@@ -1,5 +1,35 @@
 # Pure Choice
 
+## Project Description
+
+Helps track the intake of proteins, fats, carbohydrates, and calories in a daily diet.
+
+## Mechanics
+
+1. **Selecting a Product**
+
+2. **Adding to Plate (Basket)**
+    - Clicking the "Add" button adds a portion of 100 grams.
+    - Clicking the "Add More" button adds 100 grams to the weight of the product on the plate.
+    - A number next to the plate indicates the total portions of all products added to the plate.
+
+3. **Catalog**
+    - A filter for the product list by type.
+
+4. **Search**
+    - Search for products by name.
+
+5. **Plate**
+    - The page displays a table with the added products with the following columns:
+        - Product
+        - Product Weight
+        - Calories
+        - Proteins
+        - Fats
+        - Carbohydrates
+    - The weight can be adjusted using up and down arrows or by keyboard input. Setting the weight to 0 removes the product from the table.
+    - The "Clear Plate" button clears the table, removing all selected products from the list.
+
 ## Requirements
 
 - Node.js (v14.21.3)
@@ -41,7 +71,7 @@
 * Redux
 * Modern ES6 for using template strings, JSX syntax, object destructuring arrow functions and more
 * Babel for old browser support
-* SASS/SCSS: make styles greate again, with no tears
+* SASS/SCSS: make styles greate again
 * Tailwind
 * React Router
 * Hot Module Replacement for comfortable development
@@ -68,11 +98,6 @@ yarn run dev:server
 ```
 
 Starts the development server and makes your application accessible at http://localhost:8080.
-
-```Shell
-yarn run clean
-```
-Removes a directory "dist" from a project
 
 #### Building
 
