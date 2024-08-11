@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import SvgPlate from '../assets/svg/svg_plate.jsx'
@@ -17,6 +17,12 @@ const Header = ({onChangeType, onFilter}) => {
     let timer
     const style = "block ml-4 mt-1 hover:bg-gray-100 cursor-pointer"
 
+    useEffect(()=>{
+        if(isHidden){
+            clearTimeout(timer)
+        }
+    },[isHidden])
+
     return (
         <header className="fixed top-0 left-0 w-full z-10 bg-gray-00">
             <div className="flex items-center min-w-[370px] bg-orange-400 text-gray-600 h-12 rounded-b-xl sm:mx-2">
@@ -28,27 +34,27 @@ const Header = ({onChangeType, onFilter}) => {
                 </Link>
                 <div className="flex items-center w-full">
                     <div className="relative ml-3 md:ml-11 transition-all duration-500 ease-linear">
-                        <button type="button" onClick={() => setIsHidden(!isHidden)} className="z-10 rounded sm:border sm:pl-7 sm:pr-3 border-black bg-orange-400 hover:bg-orange-300">
+                        <button type="button" onClick={() => {setIsHidden(!isHidden); clearTimeout(timer)}} className="z-10 rounded sm:border sm:pl-7 sm:pr-3 border-black bg-orange-400 hover:bg-orange-300">
                             <SvgCatalog class="sm:absolute w-6 h-6 mt-[8px] sm:mt-0 sm:ml-[-25px]"/>
                             <p className="hidden sm:block">Каталог</p>
                         </button>
-                        <nav onMouseEnter={() => clearTimeout(timer)} onMouseLeave={() => timer = setTimeout(() => setIsHidden(true), 400)} 
+                        <nav onMouseEnter={() => clearTimeout(timer)} onMouseLeave={() => timer = setTimeout(() => setIsHidden(true), 1500)} 
                         className={`absolute shadow-md z-10 sm:w-52 w-screen mt-2 ml-[-129px] sm:ml-0 rounded-lg bg-white max-h-screen h-screen sm:h-auto overflow-scroll ${isHidden ? 'hidden' : ''}`}>    
                             <ul>
-                                <li><button type="button" className="block ml-4 mt-3 hover:bg-gray-100 text-orange-400 cursor-pointer" tabIndex="0" onClick={() => {changeTypeSelection('any'); setIsHidden(!isHidden)}}>Все продукты</button></li>
-                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Vegetables'); setIsHidden(!isHidden)}}>Овощи</button></li>
-                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Fruits'); setIsHidden(!isHidden)}}>Фрукты</button></li>
-                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Berries'); setIsHidden(!isHidden)}} >Ягоды</button></li>
-                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Dairy products'); setIsHidden(!isHidden)}}>Молочные продукты</button></li>
-                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Meat'); setIsHidden(!isHidden)}}>Мясо</button></li>
-                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Fish'); setIsHidden(!isHidden)}}>Рыба</button></li>
-                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Seeds'); setIsHidden(!isHidden)}}>Орехи, семена</button></li>
-                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Grocery'); setIsHidden(!isHidden)}}>Бакалея</button></li>
-                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Greens'); setIsHidden(!isHidden)}}>Зелень</button></li>
-                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Oils'); setIsHidden(!isHidden)}}>Масла</button></li>
-                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Mushrooms'); setIsHidden(!isHidden)}}>Грибы</button></li>
-                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Dried fruits'); setIsHidden(!isHidden)}}>Сухофрукты</button></li>
-                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Eggs'); setIsHidden(!isHidden)}}>Яйца</button></li>
+                                <li><button type="button" className="block ml-4 mt-3 hover:bg-gray-100 text-orange-400 cursor-pointer" tabIndex="0" onClick={() => {changeTypeSelection('any'); setIsHidden(true)}}>Все продукты</button></li>
+                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Vegetables'); setIsHidden(true)}}>Овощи</button></li>
+                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Fruits'); setIsHidden(true)}}>Фрукты</button></li>
+                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Berries'); setIsHidden(true)}} >Ягоды</button></li>
+                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Dairy products'); setIsHidden(true)}}>Молочные продукты</button></li>
+                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Meat'); setIsHidden(true)}}>Мясо</button></li>
+                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Fish'); setIsHidden(true)}}>Рыба</button></li>
+                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Seeds'); setIsHidden(true)}}>Орехи, семена</button></li>
+                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Grocery'); setIsHidden(true)}}>Бакалея</button></li>
+                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Greens'); setIsHidden(true)}}>Зелень</button></li>
+                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Oils'); setIsHidden(true)}}>Масла</button></li>
+                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Mushrooms'); setIsHidden(true)}}>Грибы</button></li>
+                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Dried fruits'); setIsHidden(true)}}>Сухофрукты</button></li>
+                                <li><button type="button" className={style} tabIndex="0" onClick={() => {changeTypeSelection('Eggs'); setIsHidden(true)}}>Яйца</button></li>
                             </ul>        
                         </nav>
                     </div>

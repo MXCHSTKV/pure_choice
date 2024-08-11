@@ -35,7 +35,7 @@ const Row = (props) => {
 
   return (
     weight === 0 ? null : <tr className="border-t border-gray-200">
-      <td className="px-1 py-2">{product.item}</td>
+      <td className="px-1 py-2 max-w-[145px] sm:max-w-xs md:max-w-lg overflow-hidden">{product.item}</td>
       <td className="px-1 py-2"><input type="number" onChange={changeWeight} min='0' max='10000' className='w-14' value={weight}/></td>
       <td className="px-1 py-2">{product.energy}</td>
       <td className="px-1 py-2">{product.protein}</td>
