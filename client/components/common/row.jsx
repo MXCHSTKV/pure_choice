@@ -10,27 +10,29 @@ const Row = (props) => {
 
   const changeWeight = (e) => dispatch(updateWeight(props.name, Math.min(parseInt(e.target.value), 10000)||0))
 
-  const usdaApi = process.env.REACT_APP_USDA_API;
+  const usdaFdcId = process.env.REACT_APP_USDA_API_FDCID
+  const usdaKey = process.env.REACT_APP_USDA_KEY
+
 
   const nutrientSearch = (res, nutrient) => res.find(
-    (obj) => obj.nutrientId === nutrient
+    (obj) => obj.nutrient.id === nutrient
   )
 
 
   useEffect(() => {
-    const getProductData = async (name) => {
-      const response = await axios.get(`${usdaApi}&query=${name}`)
-      .then(res => res.data.foods[0].foodNutrients)
+    const getProductData = async (fdcId) => {
+      const response = await axios.get(`${usdaFdcId}/${fdcId}?api_key=${usdaKey}`)
+      .then(res => res.data.foodNutrients)
       .catch(err => {})
 
-      dispatch(updateProperties(props.name, 'energy', Math.round(nutrientSearch(response, 1008).value / 100 * product.weight * 10 )/10))
-      dispatch(updateProperties(props.name, 'protein', Math.round(nutrientSearch(response, 1003).value / 100 * product.weight * 10 )/10))
-      dispatch(updateProperties(props.name, 'lipid', Math.round(nutrientSearch(response, 1004).value / 100 * product.weight * 10) /10))
-      dispatch(updateProperties(props.name, 'carbohydrate', Math.round(nutrientSearch(response, 1005).value / 100 * product.weight * 10) /10))
+      dispatch(updateProperties(props.name, 'energy', Math.round(nutrientSearch(response, 1008).amount / 100 * product.weight * 10 )/10))
+      dispatch(updateProperties(props.name, 'protein', Math.round(nutrientSearch(response, 1003).amount / 100 * product.weight * 10 )/10))
+      dispatch(updateProperties(props.name, 'lipid', Math.round(nutrientSearch(response, 1004).amount / 100 * product.weight * 10) /10))
+      dispatch(updateProperties(props.name, 'carbohydrate', Math.round(nutrientSearch(response, 1005).amount / 100 * product.weight * 10) /10))
       
     };
 
-    getProductData(props.name);
+    getProductData(props.fdcId);
   }, [product.weight]);
 
   return (

@@ -35,7 +35,7 @@ const Dish = () => {
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                         {store.map(product => {
-                        return <Row key={product.name} name={product.name} item={product.item}/>
+                        return <Row key={product.name} name={product.name} item={product.item} fdcId={product.fdcId}/>
                         })}
                         <tr className="bg-gray-100">
                             <td className="text-gray-600 text-right px-1">Total:</td>

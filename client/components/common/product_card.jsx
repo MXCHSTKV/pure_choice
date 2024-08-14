@@ -19,7 +19,7 @@ const Product = (props) => {
             <p className="text-sm ml-4">kcal: {props.kcal}</p>
             <button type="button"
             className="absolute bottom-0 ml-2 h-8 w-40 sm:w-44 text-gray-600 bg-orange-400 active:scale-95 active:bg-orange-400 rounded-md px-2 mb-4 hover:bg-orange-300 transform transition duration-500"
-            onClick={() => {dispatch(addProduct(props.name, props.item, 100)); dispatch(increaseCounter()); setButtonName("Добавить ещё")}}
+            onClick={() => {dispatch(addProduct(props.name, props.item, props.fdcId, 100)); dispatch(increaseCounter()); setButtonName("Добавить ещё")}}
             >
                 {buttonName}
             </button>

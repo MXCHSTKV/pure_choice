@@ -49,7 +49,7 @@ const Main = () => {
                 .filter((it) => it.type && it.type.includes(type))
                 .filter((it) => it.item.toLowerCase().includes(inputValue.toLowerCase()))
                 .map((it) => <div className="w-1/2 sm:w-1/3 md:w-1/4 xl:w-1/5 2xl:w-1/6 max-w-2xl">
-                    <Product key={it._id} name={it.name} item={it.item} kcal={it.kcal} img={it.img}/>
+                    <Product key={it._id} name={it.name} item={it.item} kcal={it.kcal} img={it.img} fdcId={it.fdcId}/>
                 </div>)}
             </main>
             <div className="flex-grow min-w-[370px]"></div>

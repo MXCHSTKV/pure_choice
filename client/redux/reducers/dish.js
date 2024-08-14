@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
       const element = state.dish[0] ? Object.values(state.dish).find(it => it.name === action.name) : false
       const product = element ?
       {...element, weight: element.weight + 100} :
-      {name: action.name, item: action.item, weight: 100, energy: 0, protein: 0, lipid: 0, carbohydrate: 0}
+      {name: action.name, item: action.item, fdcId: action.fdcId, weight: 100, energy: 0, protein: 0, lipid: 0, carbohydrate: 0}
       return { 
         ...state,
         dish: element ? [ ...state.dish.map(it => it.name === action.name ? { ...it, weight: it.weight + 100 } : it ) ] : [ ...state.dish, product]
@@ -65,8 +65,8 @@ export default (state = initialState, action) => {
   }  
 }  
   
-export function addProduct(name, item, weight) {  
-  return { type: ADD_PRODUCT, name, item, weight}  
+export function addProduct(name, item, fdcId, weight) {  
+  return { type: ADD_PRODUCT, name, item, fdcId, weight}  
 }  
   
 export function updateProductName(name) {  
